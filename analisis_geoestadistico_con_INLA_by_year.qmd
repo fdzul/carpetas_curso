@@ -1,0 +1,260 @@
+---
+title: "Análisis Geoestadístico de la Vigilancia Entomologica con Ovitrampas con INLA II"
+date: today
+author: 
+  - name: Felipe Antonio Dzul Manzanilla | Fabian Correa Morales
+    affiliation: Secretaria de Salud de Yucatan | CENAPRECE
+format: 
+  html:
+      theme: flatly
+      code-fold: true
+      toc: true
+      number-sections: true
+editor: visual
+title-block-banner: true
+csl: apa-single-spaced.csl
+---
+
+```{r setup, warning=FALSE, message=FALSE}
+options(shiny.maxRequestSize=30*1024^2)
+library(sf)
+library(future)
+future::plan(multisession)
+future::plan(multicore)
+
+```
+
+## Yucatán
+
+## SPDE 2022
+
+```{r spde_valladolid_2022, warning=FALSE, message=FALSE}
+#step 1. define the path for the historic dataset ####
+path_vect <- "C:/Users/HOME/Dropbox/cenaprece_datasets/2022/31_yucatan"
+path_coord <- paste(path_vect, "DescargaOvitrampasMesFco.txt", sep = "/")
+
+
+# Step 2. run the spde model ####
+x22 <- deneggs::eggs_hotspots_week(cve_mpo = "102",
+                                   cve_edo = "31",
+                                   year = "2022",
+                                   hist_dataset = FALSE,
+                                   locality = "Valladolid",
+                                   path_vect = path_vect,
+                                   path_coord = path_coord,
+                                   integration_strategy = "eb",
+                                   aproximation_method = "gaussian",
+                                   fam_distribution = "zeroinflatednbinomial1",
+                                   plot = FALSE,
+                                   kvalue = 40,
+                                   palette.viridis = "viridis",
+                                   cell.size = 500,
+                                   alpha.value = .99)
+
+# Step 3. Visualize the hotspots intensity #### 
+deneggs::eggs_hotspots_intensity_map(spde_betas = x22$betas,
+                                     years = 2022,
+                                     locality = "Valladolid",
+                                     cve_ent = "31",
+                                     palette = rcartocolor::carto_pal,
+                                     name = "SunsetDark")
+```
+
+### SPDE 2019
+
+```{r spde_valladolid_2019, warning=FALSE, message=FALSE}
+# step 1. define the path for the historic dataset ####
+path_vect <- "C:/Users/HOME/OneDrive/datasets/CENAPRECE/historic/ovitrampas/31_yucatan"
+path_coord <- paste(path_vect, "DescargaOvitrampasMesFco.txt", sep = "/")
+
+# Step 2. run the spde model ####
+x19 <- deneggs::eggs_hotspots_week(cve_mpo = "102",
+                                   cve_edo = "31",
+                                   year = "2019",
+                                   hist_dataset = TRUE,
+                                   locality = "Valladolid",
+                                   path_vect = path_vect,
+                                   path_coord = path_coord,
+                                   integration_strategy = "eb",
+                                   aproximation_method = "gaussian",
+                                   fam_distribution = "zeroinflatednbinomial1",
+                                   kvalue = 40,
+                                   plot = FALSE,
+                                   palette.viridis = "viridis",
+                                   cell.size = 500,
+                                   alpha.value = .99)
+
+# Step 3. Visualize the hotspots intensity #### 
+deneggs::eggs_hotspots_intensity_map(spde_betas = x19$betas,
+                                     years = 2019,
+                                     locality = "Valladolid",
+                                     cve_ent = "31",
+                                     palette = rcartocolor::carto_pal,
+                                     name = "SunsetDark")
+```
+
+### SPDE 2018
+
+```{r spde_valladolid_2018, warning=FALSE, message=FALSE}
+# step 1. define the path for the historic dataset ####
+path_vect <- "C:/Users/HOME/OneDrive/datasets/CENAPRECE/historic/ovitrampas/31_yucatan"
+path_coord <- paste(path_vect, "DescargaOvitrampasMesFco.txt", sep = "/")
+
+# Step 2. run the spde model ####
+x18 <- deneggs::eggs_hotspots_week(cve_mpo = "102",
+                                 cve_edo = "31",
+                                 year = "2018",
+                                 hist_dataset = TRUE,
+                                 locality = "Valladolid",
+                                 path_vect = path_vect,
+                                 path_coord = path_coord,
+                                 integration_strategy = "eb",
+                                 aproximation_method = "gaussian",
+                                 fam_distribution = "zeroinflatednbinomial1",
+                                 kvalue = 40,
+                                 plot = FALSE,
+                                 palette.viridis = "viridis",
+                                 cell.size = 500,
+                                 alpha.value = .99)
+
+# Step 3. Visualize the hotspots intensity #### 
+deneggs::eggs_hotspots_intensity_map(spde_betas = x18$betas,
+                                     years = 2018,
+                                     locality = "Valladolid",
+                                     cve_ent = "31",
+                                     palette = rcartocolor::carto_pal,
+                                     name = "SunsetDark")
+```
+
+### SPDE 2017
+
+```{r spde_valladolid_2017, warning=FALSE, message=FALSE}
+# step 1. define the path for the historic dataset ####
+path_vect <- "C:/Users/HOME/OneDrive/datasets/CENAPRECE/historic/ovitrampas/31_yucatan"
+path_coord <- paste(path_vect, "DescargaOvitrampasMesFco.txt", sep = "/")
+
+# Step 2. run the spde model ####
+x17 <- deneggs::eggs_hotspots_week(cve_mpo = "102",
+                                 cve_edo = "31",
+                                 year = "2017",
+                                 hist_dataset = TRUE,
+                                 locality = "Valladolid",
+                                 path_vect = path_vect,
+                                 path_coord = path_coord,
+                                 integration_strategy = "eb",
+                                 aproximation_method = "gaussian",
+                                 fam_distribution = "zeroinflatednbinomial1",
+                                 kvalue = 40,
+                                 plot = FALSE,
+                                 palette.viridis = "viridis",
+                                 cell.size = 500,
+                                 alpha.value = .99)
+
+# Step 3. Visualize the hotspots intensity #### 
+deneggs::eggs_hotspots_intensity_map(spde_betas = x17$betas,
+                                     years = 2017,
+                                     locality = "Valladolid",
+                                     cve_ent = "31",
+                                     palette = rcartocolor::carto_pal,
+                                     name = "SunsetDark")
+```
+
+### SPDE 2016
+
+```{r spde_valladolid_2016, warning=FALSE, message=FALSE}
+
+# step 1. define the path for the historic dataset ####
+path_vect <- "C:/Users/HOME/OneDrive/datasets/CENAPRECE/historic/ovitrampas/31_yucatan"
+path_coord <- paste(path_vect, "DescargaOvitrampasMesFco.txt", sep = "/")
+
+# Step 2. run the spde model ####
+x16 <- deneggs::eggs_hotspots_week(cve_mpo = "102",
+                                 cve_edo = "31",
+                                 year = "2016",
+                                 hist_dataset = TRUE,
+                                 locality = "Valladolid",
+                                 path_vect = path_vect,
+                                 path_coord = path_coord,
+                                 integration_strategy = "eb",
+                                 aproximation_method = "gaussian",
+                                 fam_distribution = "zeroinflatednbinomial1",
+                                 kvalue = 40,
+                                 plot = FALSE,
+                                 palette.viridis = "viridis",
+                                 cell.size = 500,
+                                 alpha.value = .99)
+
+# Step 3. Visualize the hotspots intensity #### 
+deneggs::eggs_hotspots_intensity_map(spde_betas = x16$betas,
+                                     years = 2016,
+                                     locality = "Valladolid",
+                                     cve_ent = "31",
+                                     palette = rcartocolor::carto_pal,
+                                     name = "SunsetDark")
+```
+
+### SPDE 2015
+
+```{r spde_valladolid_2015, warning=FALSE, message=FALSE}
+# step 1. define the path for the historic dataset ####
+path_vect <- "C:/Users/HOME/OneDrive/datasets/CENAPRECE/historic/ovitrampas/31_yucatan"
+path_coord <- paste(path_vect, "DescargaOvitrampasMesFco.txt", sep = "/")
+
+# Step 2. run the spde model ####
+x15 <- deneggs::eggs_hotspots_week(cve_mpo = "102",
+                                 cve_edo = "31",
+                                 year = "2015",
+                                 hist_dataset = TRUE,
+                                 locality = "Valladolid",
+                                 path_vect = path_vect,
+                                 path_coord = path_coord,
+                                 integration_strategy = "eb",
+                                 aproximation_method = "gaussian",
+                                 fam_distribution = "zeroinflatednbinomial1",
+                                 kvalue = 40,
+                                 plot = FALSE,
+                                 palette.viridis = "viridis",
+                                 cell.size = 500,
+                                 alpha.value = .99)
+
+# Step 3. Visualize the hotspots intensity #### 
+deneggs::eggs_hotspots_intensity_map(spde_betas = x15$betas,
+                                     years = 2015,
+                                     locality = "Valladolid",
+                                     cve_ent = "31",
+                                     palette = rcartocolor::carto_pal,
+                                     name = "SunsetDark")
+```
+
+### SPDE 2014
+
+```{r spde_valladolid_2014, warning=FALSE, message=FALSE}
+# step 1. define the path for the historic dataset ####
+path_vect <- "C:/Users/HOME/OneDrive/datasets/CENAPRECE/historic/ovitrampas/31_yucatan"
+path_coord <- paste(path_vect, "DescargaOvitrampasMesFco.txt", sep = "/")
+
+# Step 2. run the spde model ####
+x14 <- deneggs::eggs_hotspots_week(cve_mpo = "102",
+                                 cve_edo = "31",
+                                 year = "2014",
+                                 hist_dataset = TRUE,
+                                 locality = "Valladolid",
+                                 path_vect = path_vect,
+                                 path_coord = path_coord,
+                                 integration_strategy = "eb",
+                                 aproximation_method = "gaussian",
+                                 fam_distribution = "zeroinflatednbinomial1",
+                                 kvalue = 40,
+                                 plot = FALSE,
+                                 palette.viridis = "viridis",
+                                 cell.size = 500,
+                                 alpha.value = .99)
+
+# Step 3. Visualize the hotspots intensity #### 
+deneggs::eggs_hotspots_intensity_map(spde_betas = x14$betas,
+                                     years = 2014,
+                                     locality = "Valladolid",
+                                     cve_ent = "31",
+                                     palette = rcartocolor::carto_pal,
+                                     name = "SunsetDark")
+```

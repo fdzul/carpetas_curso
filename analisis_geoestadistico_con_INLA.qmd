@@ -1,0 +1,795 @@
+---
+title: "Análisis Geoestadístico de la Vigilancia Entomologica con Ovitrampas con INLA"
+date: today
+author: 
+  - name: Felipe Antonio Dzul Manzanilla|Fabian Correa Morales
+    affiliation: Secretaria de Salud de Yucatan | CENAPRECE
+format: 
+  html:
+      theme: flatly
+      code-fold: true
+      toc: true
+      number-sections: true
+editor: visual
+title-block-banner: true
+csl: apa-single-spaced.csl
+---
+```{r setup}
+library(sf)
+```
+
+
+## Aguascalientes
+```{r spde_01, warning=FALSE, message=FALSE}
+x <- deneggs::eggs_hotspots(path_lect = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/01_aguascalientes",
+                       cve_ent = "01",
+                       locality  = "Calvillo",
+                       path_coord = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/01_aguascalientes/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 30,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, 
+                       sem = 43,
+                       var = "eggs",
+                       cell_size = 2000,
+                       alpha = .99)
+names(x)
+x$map
+head(x$data)
+head(x$hotspots)
+```
+
+## Baja California 
+```{r spde_bc, warning=FALSE, message=FALSE}
+x <- deneggs::eggs_hotspots(path_lect = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/02_baja_california",
+                       cve_ent = "02",
+                       locality  = "Ensenada",
+                       path_coord = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/02_baja_california/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 30,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, 
+                       sem = 43,
+                       var = "eggs",
+                       cell_size = 2000,
+                       alpha = .99)
+names(x)
+x$map
+head(x$data)
+head(x$hotspots)
+```
+
+
+## Baja Califormia Sur
+```{r spde_bcs, warning=FALSE, message=FALSE}
+x <- deneggs::eggs_hotspots(path_lect = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/03_baja_california_sur",
+                       cve_ent = "03",
+                       locality  = "La Paz",
+                       path_coord = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/03_baja_california_sur/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 30,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, 
+                       sem = 43,
+                       var = "eggs",
+                       cell_size = 2000,
+                       alpha = .99)
+names(x)
+x$map
+head(x$data)
+head(x$hotspots)
+```
+
+
+## Campeche
+```{r spde_campeche, warning=FALSE, message=FALSE}
+x <- deneggs::eggs_hotspots(path_lect = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/04_campeche",
+                       cve_ent = "04",
+                       locality  = "San Francisco de Campeche",
+                       path_coord = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/04_campeche/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 30,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, 
+                       sem = 43,
+                       var = "eggs",
+                       cell_size = 2000,
+                       alpha = .99)
+names(x)
+x$map
+head(x$data)
+head(x$hotspots)
+```
+
+
+## Coahuila
+```{r spde_coahuila, warning=FALSE, message=FALSE}
+x <- deneggs::eggs_hotspots(path_lect = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/05_coahuila",
+                       cve_ent = "05",
+                       locality  = "Sabinas",
+                       path_coord = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/05_coahuila/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 30,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, 
+                       sem = 43,
+                       var = "eggs",
+                       cell_size = 2000,
+                       alpha = .99)
+names(x)
+x$map
+head(x$data)
+head(x$hotspots)
+```
+
+
+## Colima
+```{r spde_colima, warning=FALSE, message=FALSE}
+x <- deneggs::eggs_hotspots(path_lect = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/06_colima",
+                       cve_ent = "06",
+                       locality  = "Manzanillo",
+                       path_coord = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/06_colima/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 30,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, 
+                       sem = 43,
+                       var = "eggs",
+                       cell_size = 2000,
+                       alpha = .99)
+names(x)
+x$map
+head(x$data)
+head(x$hotspots)
+```
+
+
+## Chiapas
+```{r spde_chiapas, warning=FALSE, message=FALSE}
+x <- deneggs::eggs_hotspots(path_lect = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/07_chiapas",
+                       cve_ent = "07",
+                       locality  = "Tuxtla Gutiérrez",
+                       path_coord = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/07_chiapas/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 30,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, 
+                       sem = 43,
+                       var = "eggs",
+                       cell_size = 2000,
+                       alpha = .99)
+names(x)
+x$map
+head(x$data)
+head(x$hotspots)
+```
+
+
+## Chihuahua
+```{r spde_chihuahua, warning=FALSE, message=FALSE}
+x <- deneggs::eggs_hotspots(path_lect = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/08_chihuahua",
+                       cve_ent = "08",
+                       locality  = c("Juarez"),
+                       path_coord = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/08_chihuahua/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 30,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, 
+                       sem = 43,
+                       var = "eggs",
+                       cell_size = 2000,
+                       alpha = .99)
+names(x)
+x$map
+head(x$data)
+head(x$hotspots)
+```
+
+## cdmx
+```{r spde_cdmx, warning=FALSE, message=FALSE}
+x <- deneggs::eggs_hotspots(path_lect = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/09_cdmx",
+                       cve_ent = "09",
+                       locality  = c("Alvaro Obregón", "Azcapotzalco", "Benito Juárez",
+                                     "Coyoacan", "Cuajimalpa de Morelos", "Cuauhtémoc",
+                                     "Gustavo A. Madero", "Iztacalco", "Iztapalapa",
+                                     "La Magdalena Contreras", "Miguel Hidalgo",
+                                     "Villa Milpa Alta", "Tláhuac", "Tlalpan",
+                                     "Venustiano Carranza", "Xochimilco"),
+                       path_coord = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/09_cdmx/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 30,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, 
+                       sem = 43,
+                       var = "eggs",
+                       cell_size = 2000,
+                       alpha = .99)
+names(x)
+x$map
+head(x$data)
+head(x$hotspots)
+```
+
+
+## Durango
+```{r spde_durango, warning=FALSE, message=FALSE}
+x <- deneggs::eggs_hotspots(path_lect = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/10_durango",
+                       cve_ent = "10",
+                       locality  = "Victoria de Durango",
+                       path_coord = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/10_durango/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 30,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, 
+                       sem = 43,
+                       var = "eggs",
+                       cell_size = 2000,
+                       alpha = .99)
+names(x)
+x$map
+head(x$data)
+head(x$hotspots)
+```
+
+## Guanajuato 
+```{r spde_guanajuato, warning=FALSE, message=FALSE}
+x <- deneggs::eggs_hotspots(path_lect = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/11_guanajuato",
+                       cve_ent = 11,
+                       locality  = "Leon de los Aldama",
+                       path_coord = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/11_guanajuato/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 30,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, 
+                       sem = 43,
+                       var = "eggs",
+                       cell_size = 2000,
+                       alpha = .99)
+names(x)
+x$map
+head(x$data)
+head(x$hotspots)
+```
+
+## Guerrero 
+```{r spde_gro, warning=FALSE, message=FALSE}
+x <- deneggs::eggs_hotspots(path_lect = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/12_guerrero",
+                       cve_ent = 12,
+                       locality  = "Acapulco de Juarez",
+                       path_coord = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/12_guerrero/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 30,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, 
+                       sem = 43,
+                       var = "eggs",
+                       cell_size = 2000,
+                       alpha = .99)
+names(x)
+x$map
+head(x$data)
+head(x$hotspots)
+```
+## Hidalgo 
+```{r spde_hidalgo, warning=FALSE, message=FALSE}
+x <- deneggs::eggs_hotspots(path_lect = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/13_hidalgo",
+                       cve_ent = 13,
+                       locality  = "Huejutla de Reyes",
+                       path_coord = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/13_hidalgo/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 30,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, 
+                       sem = 43,
+                       var = "eggs",
+                       cell_size = 2000,
+                       alpha = .99)
+names(x)
+x$map
+head(x$data)
+head(x$hotspots)
+```
+
+## Jalisco
+```{r spde_jalisco, warning=FALSE, message=FALSE}
+x <- deneggs::eggs_hotspots(path_lect = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/14_jalisco",
+                       cve_ent = 14,
+                       locality  = c("Gudalajara", "Tlaquepaque",
+                                     "Zapopan", "Tonalá"),
+                       path_coord = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/14_jalisco/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 30,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, 
+                       sem = 43,
+                       var = "eggs",
+                       cell_size = 2000,
+                       alpha = .99)
+names(x)
+x$map
+head(x$data)
+head(x$hotspots)
+```
+
+## Estado de México
+```{r spde_edo_mexico, warning=FALSE, message=FALSE}
+x <- deneggs::eggs_hotspots(path_lect = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/15_estado_de_mexico",
+                       cve_ent = 15,
+                       locality  = "Tejupilco de Hidalgo",
+                       path_coord = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/15_estado_de_mexico/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 30,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, 
+                       sem = 43,
+                       var = "eggs",
+                       cell_size = 2000,
+                       alpha = .99)
+names(x)
+x$map
+head(x$data)
+head(x$hotspots)
+```
+
+## Michoacan
+```{r spde_michoacan, warning=FALSE, message=FALSE}
+x <- deneggs::eggs_hotspots(path_lect = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/16_michoacan",
+                       cve_ent = 16,
+                       locality  = "Uruapan",
+                       path_coord = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/16_michoacan/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 30,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, 
+                       sem = 43,
+                       var = "eggs",
+                       cell_size = 2000,
+                       alpha = .99)
+names(x)
+x$map
+head(x$data)
+head(x$hotspots)
+```
+
+## Morelos
+```{r spde_morelos, warning=FALSE, message=FALSE}
+x <- deneggs::eggs_hotspots(path_lect = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/17_morelos",
+                       cve_ent = 17,
+                       locality  = "Cuernavaca",
+                       path_coord = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/17_morelos/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 30,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, 
+                       sem = 43,
+                       var = "eggs",
+                       cell_size = 2000,
+                       alpha = .99)
+names(x)
+x$map
+head(x$data)
+head(x$hotspots)
+```
+
+## Nayarit  
+```{r spde_nayarit, warning=FALSE, message=FALSE}
+x <- deneggs::eggs_hotspots(path_lect = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/18_nayarit",
+                       cve_ent = 18,
+                       locality  = "Santiago Ixcuintla",
+                       path_coord = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/18_nayarit/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 30,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, 
+                       sem = 43,
+                       var = "eggs",
+                       cell_size = 2000,
+                       alpha = .99)
+names(x)
+x$map
+head(x$data)
+head(x$hotspots)
+```
+
+## Nuevo León
+```{r spde_nl, warning=FALSE, message=FALSE}
+x <- deneggs::eggs_hotspots(path_lect = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/19_nuevo_leon",
+                       cve_ent = 19,
+                       locality  = c("Gudalupe", "San Nicolas de los Garza", "Ciudad General Escobedo"),
+                       path_coord = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/19_nuevo_leon/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 30,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, 
+                       sem = 43,
+                       var = "eggs",
+                       cell_size = 2000,
+                       alpha = .99)
+names(x)
+x$map
+head(x$data)
+head(x$hotspots)
+```
+
+## Oaxaca
+```{r spde_oaxaca, warning=FALSE, message=FALSE}
+x <- deneggs::eggs_hotspots(path_lect = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/20_oaxaca",
+                       cve_ent = 20,
+                       locality  = "Salina Cruz",
+                       path_coord = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/20_oaxaca/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 30,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, 
+                       sem = 43,
+                       var = "eggs",
+                       cell_size = 2000,
+                       alpha = .99)
+names(x)
+x$map
+head(x$data)
+head(x$hotspots)
+```
+
+## Puebla
+```{r spde_puebla, warning=FALSE, message=FALSE}
+x <- deneggs::eggs_hotspots(path_lect = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/21_puebla",
+                       cve_ent = 21,
+                       locality  = "Izucar de Matamoros",
+                       path_coord = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/21_puebla/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 30,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, 
+                       sem = 43,
+                       var = "eggs",
+                       cell_size = 2000,
+                       alpha = .99)
+names(x)
+x$map
+head(x$data)
+head(x$hotspots)
+```
+
+## Queretaro
+No tiene información en Octubre
+
+## Quintana Roo
+```{r spde_cancun, warning=FALSE, message=FALSE}
+x <- deneggs::eggs_hotspots(path_lect = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/23_quintana_roo",
+                       cve_ent = 23,
+                       locality  = "Cancún",
+                       path_coord = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/23_quintana_roo/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 30,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, 
+                       sem = 43,
+                       var = "eggs",
+                       cell_size = 2000,
+                       alpha = .99)
+names(x)
+x$map
+head(x$data)
+head(x$hotspots)
+```
+
+## San Luis 
+```{r spde_sn_luis, warning=FALSE, message=FALSE}
+x <- deneggs::eggs_hotspots(path_lect = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/24_san_luis",
+                       cve_ent = 24,
+                       locality  = "Ciudad Valles",
+                       path_coord = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/24_san_luis/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 30,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, 
+                       sem = 43,
+                       var = "eggs",
+                       cell_size = 2000,
+                       alpha = .99)
+names(x)
+x$map
+head(x$data)
+head(x$hotspots)
+```
+
+## Sinaloa
+```{r spde_sinaloa, warning=FALSE, message=FALSE}
+x <- deneggs::eggs_hotspots(path_lect = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/25_sinaloa",
+                       cve_ent = 25,
+                       locality  = "Culiacán Rosales",
+                       path_coord = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/25_sinaloa/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 30,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, 
+                       sem = 43,
+                       var = "eggs",
+                       cell_size = 2000,
+                       alpha = .99)
+names(x)
+x$map
+head(x$data)
+head(x$hotspots)
+```
+
+## Sonora
+```{r spde_sonora, warning=FALSE, message=FALSE}
+x <- deneggs::eggs_hotspots(path_lect = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/26_sonora",
+                       cve_ent = 26,
+                       locality  = "Hermosillo",
+                       path_coord = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/26_sonora/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 30,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, 
+                       sem = 43,
+                       var = "eggs",
+                       cell_size = 2000,
+                       alpha = .99)
+names(x)
+x$map
+head(x$data)
+head(x$hotspots)
+```
+
+## Tabasco
+```{r spde_villahermosa, warning=FALSE, message=FALSE}
+x <- deneggs::eggs_hotspots(path_lect = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/27_tabasco",
+                       cve_ent = 27,
+                       locality  = "Villahermosa",
+                       path_coord = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/27_tabasco/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 30,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, 
+                       sem = 43,
+                       var = "eggs",
+                       cell_size = 2000,
+                       alpha = .99)
+names(x)
+x$map
+head(x$data)
+head(x$hotspots)
+```
+
+## Tamaulipas
+```{r spde_tampico, warning=FALSE, message=FALSE}
+x <- deneggs::eggs_hotspots(path_lect = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/28_tamaulipas",
+                       cve_ent = 28,
+                       locality  = "Reynosa",
+                       path_coord = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/28_tamaulipas/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 30,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, 
+                       sem = 43,
+                       var = "eggs",
+                       cell_size = 2000,
+                       alpha = .99)
+names(x)
+x$map
+head(x$data)
+head(x$hotspots)
+```
+
+## Tlaxcala
+No tiene información en Octubre
+
+## Veracruz
+```{r spde_veracruz, warning=FALSE, message=FALSE}
+x <- deneggs::eggs_hotspots(path_lect = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/30_veracruz",
+                       cve_ent = 30,
+                       locality  = "Veracruz",
+                       path_coord = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/30_veracruz/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 30,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, ##### NOTA
+                       sem = 43,
+                       var = "eggs",
+                       cell_size = 2000,
+                       alpha = .99)
+names(x)
+x$map
+head(x$data)
+head(x$hotspots)
+```
+
+## Yucatán
+
+```{r spde_merida, warning=FALSE, message=FALSE}
+x <- deneggs::eggs_hotspots(path_lect = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/31_yucatan",
+                       cve_ent = 31,
+                       locality  = "Merida",
+                       path_coord = "/Users/fdzul/Dropbox/cenaprece_datasets/2022/31_yucatan/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 30,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, ##### NOTA
+                       sem = 43,
+                       var = "eggs",
+                       cell_size = 2000,
+                       alpha = .99)
+names(x)
+x$map
+head(x$data)
+head(x$hotspots)
+```
+
+## Zacatecas
